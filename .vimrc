@@ -17,21 +17,30 @@ Plugin 'VundleVim/Vundle.vim'
 " The following are examples of different formats supported.
 " Keep Plugin commands between vundle#begin/end.
 " plugin on GitHub repo
-Plugin 'tpope/vim-fugitive'
+" Plugin 'tpope/vim-fugitive'
+
+" For code intellisense/auto-complete
+Plugin 'Valloric/YouCompleteMe'
+
+" For Markdown (Need Noje.js. Here I use Node.js 8. For Node.js 6, change the Following `setup_8.x` to `setup_6.x`)
+" 1. Command for installing Node.js 8
+" curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
+" sudo apt-get install -y nodejs
+" 2. Then install `instant-markdown-d`
+" sudo npm -g install instant-markdown-d
 Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
-Plugin 'Valloric/YouCompleteMe'
-" For Markdown
 Plugin 'suan/vim-instant-markdown'
 " plugin from http://vim-scripts.org/vim/scripts.html
 " Plugin 'L9'
 " Git plugin not hosted on GitHub
-	" Plugin 'git://git.wincent.com/command-t.git'
+Plugin 'git://git.wincent.com/command-t.git'  " Fast file navigation for VIM
+
 " git repos on your local machine (i.e. when working on your own plugin)
 	" Plugin 'file:///home/gmarik/path/to/plugin'
 " The sparkup vim script is in a subdirectory of this repo called vim.
 " Pass the path to set the runtimepath properly.
-Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
+Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}  " A parser for a condensed HTML format
 " Install L9 and avoid a Naming conflict if you've already installed a
 " different version somewhere else.
 " Plugin 'ascenator/L9', {'name': 'newL9'}

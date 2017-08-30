@@ -34,7 +34,7 @@ Plugin 'suan/vim-instant-markdown'
 " plugin from http://vim-scripts.org/vim/scripts.html
 " Plugin 'L9'
 " Git plugin not hosted on GitHub
-Plugin 'git://git.wincent.com/command-t.git'  " Fast file navigation for VIM
+" Plugin 'git://git.wincent.com/command-t.git'  " Fast file navigation for VIM
 
 " git repos on your local machine (i.e. when working on your own plugin)
 	" Plugin 'file:///home/gmarik/path/to/plugin'
@@ -117,3 +117,7 @@ if filereadable("/etc/vim/vimrc.local")
   source /etc/vim/vimrc.local
 endif
 
+let mapleader = "|" 
+
+nnoremap <leader>gd :YcmCompleter GoToDefinitionElseDeclaration<CR>  
+let g:ycm_collect_identifiers_from_tag_files = 1 "使用ctags生成的tags文件

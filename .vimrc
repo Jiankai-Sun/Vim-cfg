@@ -31,6 +31,8 @@ Plugin 'Valloric/YouCompleteMe'
 Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
 Plugin 'suan/vim-instant-markdown'
+Plugin 'preservim/nerdtree'
+Bundle 'jistr/vim-nerdtree-tabs'
 " plugin from http://vim-scripts.org/vim/scripts.html
 " Plugin 'L9'
 " Git plugin not hosted on GitHub
@@ -121,3 +123,11 @@ let mapleader = "|"
 
 nnoremap <leader>gd :YcmCompleter GoToDefinitionElseDeclaration<CR>  
 let g:ycm_collect_identifiers_from_tag_files = 1 "使用ctags生成的tags文件
+" -------------------------------------------------------------------------
+" NERDTree config
+map <F2> : NERDTreeToggle<CR>
+" close NERDtree if that is the last window left
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+" Open NERDtree automatically on vim startup
+" autocmd StdinReadPre * let s:std_in=1 autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
+autocmd vimenter * NERDTree

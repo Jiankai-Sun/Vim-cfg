@@ -22,16 +22,20 @@ Plugin 'VundleVim/Vundle.vim'
 " For code intellisense/auto-complete
 Plugin 'Valloric/YouCompleteMe'
 
-" For Markdown (Need Noje.js. Here I use Node.js 8. For Node.js 6, change the Following `setup_8.x` to `setup_6.x`)
-" 1. Command for installing Node.js 8
-" curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
-" sudo apt-get install -y nodejs
-" 2. Then install `instant-markdown-d`
-" sudo npm -g install instant-markdown-d
-Plugin 'godlygeek/tabular'
-Plugin 'plasticboy/vim-markdown'
-Plugin 'suan/vim-instant-markdown'
+" " Markdown config --------------------------------
+" " For Markdown (Need Noje.js. Here I use Node.js 8. For Node.js 6, change the Following `setup_8.x` to `setup_6.x`)
+" " 1. Command for installing Node.js 8
+" " curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
+" " sudo apt-get install -y nodejs
+" " 2. Then install `instant-markdown-d`
+" " sudo npm -g install instant-markdown-d
+" " ------------------------------------------------
+" Plugin 'godlygeek/tabular'
+" Plugin 'plasticboy/vim-markdown'
+" Plugin 'suan/vim-instant-markdown'
+" " ------------------------------------------------
 Plugin 'preservim/nerdtree'
+Plugin 'Xuyuanp/nerdtree-git-plugin'
 Plugin 'vim-syntastic/syntastic'
 Plugin 'kien/ctrlp.vim'
 Plugin 'majutsushi/tagbar'
@@ -41,11 +45,14 @@ Plugin 'vim-airline/vim-airline'
 " Git plugin not hosted on GitHub
 " Plugin 'git://git.wincent.com/command-t.git'  " Fast file navigation for VIM
 
-" git repos on your local machine (i.e. when working on your own plugin)
-	" Plugin 'file:///home/gmarik/path/to/plugin'
-" The sparkup vim script is in a subdirectory of this repo called vim.
-" Pass the path to set the runtimepath properly.
-Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}  " A parser for a condensed HTML format
+" " sparkup config -----------------------------------
+" " git repos on your local machine (i.e. when working on your own plugin)
+" 	" Plugin 'file:///home/gmarik/path/to/plugin'
+" " The sparkup vim script is in a subdirectory of this repo called vim.
+" " Pass the path to set the runtimepath properly.
+" " --------------------------------------------------
+" Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}  " A parser for a condensed HTML format
+" " --------------------------------------------------
 " Install L9 and avoid a Naming conflict if you've already installed a
 " different version somewhere else.
 " Plugin 'ascenator/L9', {'name': 'newL9'}
@@ -131,8 +138,10 @@ let g:ycm_collect_identifiers_from_tag_files = 1 "使用ctags生成的tags文件
 map <F2> : NERDTreeToggle<CR>
 " close NERDtree if that is the last window left
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
-" Open NERDtree automatically on vim startup
-" autocmd StdinReadPre * let s:std_in=1 autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
-autocmd vimenter * NERDTree
+" Open NERDtree automatically on vim startup https://github.com/preservim/nerdtree/blob/master/README.markdown#how-can-i-open-a-nerdtree-automatically-when-vim-starts-up-if-no-files-were-specified
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | exe 'cd '.argv()[0] | endif
+" autocmd vimenter * NERDTree
 " Tagbar config
 nmap <F8> :TagbarToggle<CR>
+let g:airline_powerline_fonts = 1
